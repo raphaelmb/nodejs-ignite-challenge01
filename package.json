@@ -1,0 +1,21 @@
+{
+  "name": "vanilla-server",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelmb/nodejs-ignite-challenge01.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raphaelmb/nodejs-ignite-challenge01/issues"
+  },
+  "homepage": "https://github.com/raphaelmb/nodejs-ignite-challenge01#readme",
+  "description": ""
+}
