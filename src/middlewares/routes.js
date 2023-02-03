@@ -7,27 +7,47 @@ const database = new Database();
 export const routes = [
   {
     method: "GET",
-    path: buildRoutePath(""),
+    path: buildRoutePath("/tasks"),
     handler: (req, res) => {},
   },
   {
     method: "POST",
-    path: buildRoutePath(""),
-    handler: (req, res) => {},
+    path: buildRoutePath("/tasks"),
+    handler: (req, res) => {
+      const { title, description } = req.body;
+      if (!title || !description) {
+        return res
+          .writeHead(400)
+          .end(
+            JSON.stringify({ message: "title and description are required" })
+          );
+      }
+
+      database.insert("tasks", {
+        id: randomUUID(),
+        title,
+        description,
+        completed_at: null,
+        created_at: new Date(),
+        updated_at: new Date(),
+      });
+
+      return res.writeHead(201).end();
+    },
   },
   {
     method: "DELETE",
-    path: buildRoutePath(""),
+    path: buildRoutePath("/tasks/:id"),
     handler: (req, res) => {},
   },
   {
     method: "PUT",
-    path: buildRoutePath(""),
+    path: buildRoutePath("/tasks/:id"),
     handler: (req, res) => {},
   },
   {
     method: "PATCH",
-    path: buildRoutePath(""),
+    path: buildRoutePath("/tasks/:id/complete"),
     handler: (req, res) => {},
   },
 ];
